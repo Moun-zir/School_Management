@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class DashboardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //print('okay');
     return Container(
         padding: EdgeInsets.all(20.0),
         child: Column(

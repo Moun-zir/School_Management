@@ -98,7 +98,6 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    print('oui');
     return Scaffold(
       appBar: AppBar(
         title: Text('SCHOOL MANAGEMENT'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ecoleapp/infos.dart'; // Import de la page InfosPage
 
 class InscriptionPage extends StatefulWidget {
   @override
@@ -7,10 +8,16 @@ class InscriptionPage extends StatefulWidget {
 
 class _InscriptionPageState extends State<InscriptionPage> {
   // Liste des options pour la liste déroulante
-  List<String> options = ['Choix', 'Masculin', 'Féminin'];
+  List<String> option = ['Choix', 'Masculin', 'Féminin'];
+  List<String> filieres = ['Filière A', 'Filière B', 'Filière C'];
+  List<String> options = ['Option 1', 'Option 2', 'Option 3'];
+  List<String> niveaux = ['Niveau 1', 'Niveau 2', 'Niveau 3'];
 
   // Valeur sélectionnée par défaut pour la liste déroulante
-  String selectedOption = 'Choix';
+  String selectedOption = '';
+  String selectedFiliere = '';
+  String selectedOptions = '';
+  String selectedNiveau = '';
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +27,7 @@ class _InscriptionPageState extends State<InscriptionPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Formulaire d\'inscription',
+            'INFORMATIONS DE L\' ETUDIANT',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 20),
@@ -43,17 +50,30 @@ class _InscriptionPageState extends State<InscriptionPage> {
               ),
               SizedBox(width: 25),
               Expanded(
-                child: TextField(
+                child: DropdownButtonFormField<String>(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Sexe',
                   ),
+                  value: selectedOption, // Utilisez une variable pour stocker la valeur sélectionnée
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedOption = newValue!;
+                    });
+                  },
+                  items: ['','Masculin', 'Féminin']
+                  .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
               ),
               SizedBox(width: 25),
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Date de naissance',
                   ),
                 ),
               ),
@@ -65,32 +85,71 @@ class _InscriptionPageState extends State<InscriptionPage> {
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Nom',
+                    labelText: 'Matricule',
                   ),
                 ),
               ),
               SizedBox(width: 25),
               Expanded(
-                child: TextField(
+                child: DropdownButtonFormField<String>(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Filière',
                   ),
+                  value: selectedFiliere,
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedFiliere = newValue!;
+                    });
+                  },
+                  items: ['','Filière A', 'Filière B', 'Filière C']
+                  .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
               ),
               SizedBox(width: 25),
               Expanded(
-                child: TextField(
+                child: DropdownButtonFormField<String>(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Option',
                   ),
+                  value: selectedOption,
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedOption = newValue!;
+                    });
+                  },
+                  items: ['','Option 1', 'Option 2', 'Option 3']
+                  .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
               ),
               SizedBox(width: 25),
               Expanded(
-                child: TextField(
+                child: DropdownButtonFormField<String>(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Niveau',
                   ),
+                  value: selectedNiveau,
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedNiveau = newValue!;
+                    });
+                  },
+                  items: ['','Niveau 1', 'Niveau 2', 'Niveau 3']
+                  .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
               ),
             ],
@@ -101,7 +160,7 @@ class _InscriptionPageState extends State<InscriptionPage> {
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Nom',
+                    labelText: 'Adresse',
                   ),
                 ),
               ),
@@ -109,7 +168,7 @@ class _InscriptionPageState extends State<InscriptionPage> {
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Email',
                   ),
                 ),
               ),
@@ -117,7 +176,7 @@ class _InscriptionPageState extends State<InscriptionPage> {
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Nationalité',
                   ),
                 ),
               ),
@@ -125,54 +184,22 @@ class _InscriptionPageState extends State<InscriptionPage> {
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Prénom',
+                    labelText: 'Numero de télephone',
                   ),
                 ),
               ),
             ],
           ),
           SizedBox(height: 20),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Nom',
-                  ),
-                ),
-              ),
-              SizedBox(width: 25),
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Prénom',
-                  ),
-                ),
-              ),
-              SizedBox(width: 25),
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Prénom',
-                  ),
-                ),
-              ),
-              SizedBox(width: 25),
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Prénom',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
+          // Répétez les autres lignes de champs de texte ou de widgets ici...
           ElevatedButton(
             onPressed: () {
-              // Logique pour soumettre le formulaire
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InfosPage()), // Redirection vers la page infos.dart
+              );
             },
-            child: Text('S\'inscrire'),
+            child: Text('SUIVANT'), // Changement du texte du bouton
           ),
         ],
       ),
