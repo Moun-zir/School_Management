@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class note extends StatefulWidget {
-  const note({super.key});
+class AjoutNotePage extends StatefulWidget {
+  const AjoutNotePage({super.key});
 
   @override
-  State<note> createState() => _noteState();
+  State<AjoutNotePage> createState() => _AjoutNotePageState();
 }
 
-class _noteState extends State<note> {
+class _AjoutNotePageState extends State<AjoutNotePage> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
